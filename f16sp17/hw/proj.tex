@@ -1,51 +1,4 @@
-\documentclass[11pt]{amsart}
-\usepackage{amsmath, amsthm, amssymb, hyperref}
-\usepackage{graphicx}
-\usepackage[square]{natbib}
-\usepackage{hyperref}
-\usepackage{fullpage}
-\usepackage{mathtools}
 
-\newtheorem*{theorem}{Theorem}
-\newtheoremstyle{named}{}{}{\itshape}{}{\bfseries}{.}{.5em}{\thmnote{#3's }#1}
-\theoremstyle{named}
-\newtheorem*{namedtheorem}{Theorem}
-\newtheorem{definition}{Definition}
-\newtheorem{prop}{Proposition}
-\newtheorem{lem}{Lemma}
-
-\newcommand{\ie}{{\it i.e. }}
-\newcommand{\com}[1]{\color{blue}{ #1 }\color{black}}
-\newcommand{\cl}[1]{{\mathrm{Cl}(#1)}}
-\newcommand{\roi}[1]{\mathcal{O}_{#1}}
-\newcommand{\gal}[3]{\mathrm{Gal}(#1 #2 #3)}
-\newcommand{\iso}{\cong}
-\newcommand{\rats}{\mathbb{Q}}
-\newcommand{\reals}{\mathbb{R}}
-\newcommand{\cmplx}{\mathbb{C}}
-\renewcommand{\prime}{\mathfrak{p}}
-\newcommand{\oprime}{\mathfrak{P}}
-\newcommand{\oprimealt}{\oprime^o}
-\newcommand{\frob}[1]{\mathrm{Fr}_{#1}}
-%\newcommand{\legndr}[2]{\left(\dfrac{#1}{#2}\right)}
-\newcommand{\legndr}[2]{\genfrac{(}{)}{}{}{#1}{#2}}
-\newcommand{\N}[1]{N(#1)}
-\newcommand{\Zmod}[1]{\mathbb{Z}/#1 \mathbb{Z}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Zn}{\mathbb{Z}/n\mathbb{Z}}
-\newcommand{\Znu}{\left(\mathbb{Z}/n\mathbb{Z}\right)^\times}
-\newcommand{\Zp}{\mathbb{Z}/p\mathbb{Z}}
-\newcommand{\Zpu}{\left(\mathbb{Z}/p\mathbb{Z}\right)^\times}
-\newcommand{\nnreals}{\mathbb{R}^{\geq 0}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\Qp}{\Q_p}
-\renewcommand{\hom}[1]{\mathrm{hom}(#1)}
-\newcommand{\home}{\mathrm{hom}}
-\newcommand{\dhom}[1]{\mathrm{dehom}(#1)}
-\newcommand{\dehom}{\mathrm{dehom}}
-\newcommand{\rad}[1]{\sqrt{#1}}
-
-\begin{document}
 \section{Homogenization and Dehomogenization}
 Let $f$ be an element of a polynomial ring. Let $\hom f$ be the homogenization of $f$ and $\dhom f$ be its dehomogenization. For an ideal $I$ of a polynomial ring, let $\hom I$ refer to the homogenization of its generators, and similarly for $\dhom I$. Clearly, both of these are still ideals. Let $P := k[x_1, ..., x_n], S := k[x_0, ..., x_n]$.
 
@@ -88,4 +41,3 @@ Since $C$ is a plane curve, the closure is just given by the homogenization: $\b
 
 \section{Quadratic Forms}
 To compute the $i$-th gradient component, let $F = \sum_{i, j} c_{ij} x_i x_j$. Then $F_i = 2 c_{ii} x_i + 2 \sum_{j \neq i} c_{ij} x_j$. Notice that this entry can be written as \[(x_1 \ x_2 \cdots x_n) \cdot (2c_{i1} \ \cdots 2c_{ii} \cdots 2c_{in}),\] where $\cdot$ denotes the dot product. If we let $\bar{x} = (x_1 \ x_2 \cdots x_n)$, then the gradient can be written as $\bar{x} (c_{ij})^T = \bar{x} (c_{ij}).$ Then the singular locus of this is exactly those $\bar{x}$ such that $\bar{x} (c_{ij}) \bar{x}^T = 0,$ as desired.
-\end{document}
