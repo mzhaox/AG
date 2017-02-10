@@ -22,7 +22,7 @@ clean:
 		$(LATEXMK) -C $(MAIN)
 		rm -f $(MAIN).pdfsync
 		rm -rf *~ *.tmp
-		rm -f *.bbl *.blg *.aux *.end *.fls *.log *.out *.fdb_latexmk *.vscodeLog *.snm *.nav
+		rm -f *.bbl *.blg *.aux *.end *.fls *.log *.out *.fdb_latexmk *.vscodeLog *.snm *.nav *.synctex.gz
 
 once:
 		$(LATEXMK) $(LATEXMKOPT) $(LATEXOPT) $(NONSTOP) $(MAIN)
