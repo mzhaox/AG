@@ -1,0 +1,85 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath, amsthm, amssymb, hyperref}
+\usepackage{graphicx}
+\usepackage[square]{natbib}
+\usepackage{hyperref}
+\usepackage{fullpage}
+\usepackage{mathtools}
+
+\newtheorem*{theorem}{Theorem}
+\newtheoremstyle{named}{}{}{\itshape}{}{\bfseries}{.}{.5em}{\thmnote{#3's }#1}
+\theoremstyle{named}
+\newtheorem*{namedtheorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{lem}{Lemma}
+
+\newcommand{\ie}{{\it i.e. }}
+\newcommand{\com}[1]{\color{blue}{ #1 }\color{black}}
+\newcommand{\cl}[1]{{\mathrm{Cl}(#1)}}
+\newcommand{\roi}[1]{\mathcal{O}_{#1}}
+\newcommand{\gal}[3]{\mathrm{Gal}(#1 #2 #3)}
+\newcommand{\iso}{\cong}
+\newcommand{\rats}{\mathbb{Q}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\cmplx}{\mathbb{C}}
+\renewcommand{\prime}{\mathfrak{p}}
+\newcommand{\oprime}{\mathfrak{P}}
+\newcommand{\oprimealt}{\oprime^o}
+\newcommand{\frob}[1]{\mathrm{Fr}_{#1}}
+\newcommand{\legndr}[2]{\genfrac{(}{)}{}{}{#1}{#2}}
+\newcommand{\N}[1]{N(#1)}
+\newcommand{\Zmod}[1]{\mathbb{Z}/#1 \mathbb{Z}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Zn}{\mathbb{Z}/n\mathbb{Z}}
+\newcommand{\Znu}{\left(\mathbb{Z}/n\mathbb{Z}\right)^\times}
+\newcommand{\Zp}{\mathbb{Z}/p\mathbb{Z}}
+\newcommand{\Zpu}{\left(\mathbb{Z}/p\mathbb{Z}\right)^\times}
+\newcommand{\nnreals}{\mathbb{R}^{\geq 0}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Qp}{\Q_p}
+\newcommand{\tr}{\mathrm{tr}}
+
+\begin{document}
+\noindent \textbf{Problem 1a}. Let $I = I(X), J = I(Y)$. Then we claim $X \cup Y = V(IJ)$. Clearly, $V(IJ) \supset X \cup Y$, since for $h := \sum_{f_i \in I(X), g_i \in I(Y)} f_i g_i$, if $x \in X$, $h(x) = \sum f_i(x) g_i(x) = \sum 0 \cdot g_i(x).$ Similarly, for $y \in Y$, $h(y) = 0$.
+
+On the other hand, these two sets differ only if there is a point $p \not\in X \cup Y$ such that for any $h$ as above, $h(p) = 0$. In particular, this means that for any $f, g \in I, J$, $f(p) g(p) = 0$. Hence $p \in V(I) = X,$ a contradiction.
+
+If we take $\cmplx[X]$, then consider the family of ideals $\langle x - n \rangle$, $n \in \Z$. These are maximal ideals, hence prime, so their vanishing sets are varieties. The union of these varieties is $\Z$, but this is not an algebraic set, since any polynomial vanishing on all of $\Z$ must be the zero polynomial. But that would vanish on all of $\cmplx$, not just $\Z$.
+
+\noindent \textbf{Problem 1b}. Here, we claim that $X \cap Y = V(I + J)$. Clearly, $X \cap Y \subset V(I + J)$, since one way for a sum $f + g$ ($f, g \in I, J$) to vanish is for each term to vanish. On the other hand, if we have $p \not\in X \cap Y$ but $p \in V(I + J)$, then $f(p) = 0$ for every $f \in I$, contradicting the fact that $X = V(I).$  
+
+If we consider $k[X]$, and we take the prime ideals $\langle x \rangle, \langle 1 - x \rangle$, then their sum is the unit ideal, which is not prime since it isn't proper. 
+
+\noindent\textbf{Problem 1c}. Using the Lasker-Noether theorem, we can conclude that for any algebraic set $X = V(I)$, we can write $I$ as an intersection of primary ideals $P_1, ..., P_n$. If we let $r(J)$ be the radical of $J$, using the fact that $I$ is a radical ideal and $r(J \cap K) = r(J) \cap r(K)$, we find that $I = r(I) = r(P_1) \cap \cdots \cap r(P_n)$. Since the radical of a primary ideal is prime, this proves what we wanted.
+
+\noindent\textbf{Problem 2a}. Without loss of generality, let $p, q, r$ have distinct $x$ coordinates. Let $f = (x - p_1) (x - q_1) (x - r_1)$ and let $g = y - q(x)$, where $q(x)$ is a quadratic passing through the points $p, q, r$. Then it's clear $V(\langle f, g \rangle) = S.$
+
+\noindent\textbf{Problem 2b}. The question amounts to whether $\langle f, g \rangle$ is a geometric ideal. If it is, then by the Nullstellensatz, $\langle f, g \rangle = I(V(\langle f, g \rangle))$. Since $I(S)$ is geometric, $I(S) = I(V(I(S)))$. Since $S = V(\langle f, g \rangle)$ is algebraic, then $S = V(I(S))$, hence $V(\langle f, g \rangle) = V(I(S))$. Taking $I$ of both sides would give us $\langle f, g \rangle = I(S).$ So the failure must be that $\langle f, g \rangle$ is not a geometric ideal.
+
+To see that this happens, take $k = \cmplx$. Let the three points be $(0, 0), (1, 0), (2, i)$. Then $f = x (x - 1)(x - i), g = y - \frac{i}{2} x(x - 1)$. We claim that a linear combination of $f, g$ must be at least quadratic in $x$, if it is non-zero. Note that a linear combination of these is always cubic or larger in $x$, unless the $f$-coefficient is $0$ or if we balance out the powers.
+
+If the $f$-coefficient is zero, then any non-zero polynomial (that is a linear combination) will be at least quadratic in $x$. If we balance out the powers, with a non-zero $f$-coefficient, we need to be more careful. Let $h = af + bg$. By factoring, one can see that $h = x(x - 1)(ax - ai - \frac{bi}{2}) + by.$ Then $a \neq 0$, so the degree of $x$ in the third factor is at least 0, so $h$ is still at least quadratic. 
+
+However, if we take $h(x,y) = 2iy^2 + xy$, it vanishes at the three points above, but it can't be a linear combination of $f, g$, since it's not quadratic in $x$.
+
+\noindent\textbf{Problem 2c}. Without loss of generality, we can assume all $y$-coordinates are 0. Let $P_i = \langle x - x_i, y \rangle.$ Then if $p, q, r = (x_1, 0), (x_2, 0), (x_3, 0)$, then $S = V(\prod_{i = 1}^3 P_i).$ Then $I(S) = I(V(P_1 P_2 P_3)) = \sqrt{P_1 P_2 P_3} = \sqrt {P_1} \sqrt {P_2} \sqrt {P_3} = P_1 P_2 P_3.$
+
+\noindent\textbf{Problem 2d}.
+
+\newpage
+\noindent\textbf{Problem 3a}. Let $q = ax^2 + bxy + cy^2$. Otherwise, $q$ would factor into two linearly independent factors. Now assume $q$ has a singular point $(x_0, y_0)$ different than the origin. Then $q_x, q_y$ vanish at that point, which induces several requirements.
+\begin{itemize}
+\item $b \neq 0$, otherwise $q$ is degenerate.
+\item $c \neq 0$, otherwise $q$ is degenerate.
+\end{itemize}
+Hence $y_0 = -2ax_0/b = -bx_0/2c$, hence $b^2 = 4ac$. Then $\frac{1}{2b} q_x q_y = \frac{1}{2b} (2ax + by) (2cy + bx) = \frac{1}{2b} (2abx^2 + (b^2 + 4ac)xy + 2bcy^2).$ Notice that $b^2 = 4ac$ and $4ac/b = b$. Hence $(b^2 + 4ac)/2b = 8ac/2b = b$. Hence $q = \frac{1}{2b} q_x q_y$, as desired.
+
+On the other hand, if $q = fg$, where $f, g$ are homogenous linear polynomials, then $q_x = f_x g + g_x f$ and $q_y = f_y g + f g_y$. Let $f = ax + by + c, g = dx + ey + f$. Then the unique solvability of the equations $q_x = q_y = 0$ requires that $ae - bd \neq 0$, or that $a/d \neq b/e$, which requires $f, g$ to be linearly independent.
+
+An example of a singular conic that doesn't factor in more than 2 variables is $x^2 - yz$.
+
+\noindent\textbf{Problem 3b}. Let $h(x,y) = y^d - f(x)$, and let $h_x, h_y$ be the partials. Then there is a simultaneous solution to $h = 0, h_x = 0, h_y = 0$ if and only if $f, f_x$ share a root, which is true if and only if $f$ has a double root.
+
+\noindent\textbf{Problem 4a}.
+\end{document}
