@@ -1,0 +1,145 @@
+\input{preamble}
+
+\begin{document}
+
+\section{Varieties}
+\subsection{Affine Varieties}
+
+\begin{questions}
+\question Let $k = \conj{k}$ be a field.
+\begin{parts}
+\part Let $Y = \{(x, x^2) | x \in k\}$. Show that $A(Y)$ is isomorphic to a
+polynomial ring in one variable over $k$.
+\begin{solution}
+Define $\varphi : k[x,y] \rightarrow k[x]$ by $y \rightarrow x^2$. This is
+clearly surjective, and we just want to show that $\ker \varphi = I(Y)$. If $f
+\in \ker \varphi$, then $f(x, x^2)$ is identically zero, so $f$ vanishes at
+every point of $Y$. If $f \in I(Y)$, so that $f(a, a^2)$ for every $a \in k$, we
+can only conclude $f(x, x^2) = 0$ since $k$ is algebraically closed. This
+follows from the
+\begin{lem}
+For $f_1, f_2 \in k[x]$, if $f_1(a) = f_2(a)$ for every $a \in k$, then $f_1 =
+f_2$.
+\end{lem}
+\begin{proof}
+Since $k$ is algebraically closed, $f_1 - f_2$ has finitely many zeros, unless
+it is identically zero. It has infinitely many zeros since $k$ is
+algebraically closed. Thus, $f_1 = f_2$.
+\end{proof}
+Thus, $k[x,y] / I(Y) \iso k[x]$.
+\end{solution}
+\part Let $Z = \{ (x, y) | xy = 1\}$. Show that $A(Z)$ is not isomorphic to a
+polynomial ring in one variable over $k$.
+\begin{solution}
+Since $xy - 1$ is irreducible, $(xy - 1)$ is prime, and $I(Z) = (xy - 1)$. Then
+$A(Z) = k[x,y]/(xy - 1)$. Suppose there is an isomorphism $\phi: A(Z)
+\rightarrow k[x,y]$. Then $\phi(x) = p(t), \phi(y) = q(t)$. Since $xy = 1$, $p
+(t)q(t) = 1$. Since $k$ is algebraically closed, this implies $p, q$ are
+constants, and so $\phi$ is not surjective.
+\end{solution}
+\part Let $f$ be an irreducible quadratic polynomial in $k[x,y]$, and let $W$ be
+the conic defined by $f$. Show that $A(W)$ is isomorphic to $A(Y)$ or $A(Z)$.
+Which one is it and when?
+\end{parts}
+\question Let $Y = \{ (t, t^2, t^3) | t \in k\}$. Show that $Y$ is an affine
+variety of dimension 1. Find generators for $I(Y)$. Show that $A(Y)$ is
+isomorphic to a polynomial ring in one variable over $k$.
+\begin{solution}
+Clearly $Y = Z((y - x^2) + (z - x^3)) = Z(y - x^2) \cap Z(z - x^3)$. Then we
+want to show that $(y - x^2, z - x^3)$ is a prime ideal. But the quotient of $k
+[x,y,z]$ by this ideal is $k[x]$, a domain. Thus, $I(Y) = (y - x^2, z - x^3)$.
+\end{solution}
+
+\question Let $Y$ be the algebraic set defined by $x^2 - yz$ and $xz - x$. Show
+that $Y$ is a union of three irreducible components. Describe them and find
+their prime ideals.
+\begin{solution}
+Since \begin{align*}
+Y & = Z(x^2 - yz) \cap Z(xz - x) \\
+& = Z(x^2 - yz) \cap (Z(x) \cup Z(z - 1)) \\
+& = (Z(x^2 - yz) \cap Z(x)) \cup (Z(x^2 - yz) \cap Z(z - 1)) \\
+& = (Z(x) \cap Z(y)) \cup (Z(x) \cap Z(z)) \cup (Z(x^2 - y) \cap Z(z - 1)).
+\end{align*}
+These components have prime ideals $(x, y)$, $(x, z)$, $(x^2 - y, z - 1)$. These
+components all have coordinate rings isomorphic to $k[t]$. Thus they are
+indeed prime.
+\end{solution}
+
+\question If we identify $\mathbb{A}^2$ with $\mathbb{A}^1 \times \mathbb{A}^1$,
+show that the Zariski topology on $\mathbb{A}^2$ is not the product topology.
+\begin{solution}
+All closed sets in the product topology are either (i) empty or the whole plane,
+(2) collections of finite points, or (3) finite collections of horizontal and
+vertical lines. However, by definition of the Zariski topology on $\mathbb
+{A}^2$, $Z(y - x^2)$ is closed and is not in either of the three categories.
+\end{solution}
+
+\question Show that a $k$-algebra is isomorphic to the affine coordinate ring of
+some algebraic set in some affine space if and only if $B$ is a finitely
+generated $k$-algebra with no nilpotent elements.
+\begin{solution}
+Suppose $B$ has $n$ generators. Then there is $\varphi: k[x_1, ..., x_n]
+\twoheadrightarrow B$, sending $x_i$ to the $i$-th generator. We just need to
+show that $\ker \varphi$ is a radical ideal, so that it corresponds to an
+algebraic set. If $f^n \in \ker \varphi$, then $\varphi(f)^n = 0$. Since $B$ has
+no nilpotents, $\varphi(f) = 0$, hence $f \in \ker \varphi$.
+\end{solution}
+
+\question Any nonempty open subset of an irreducible topological space is dense
+and irreducible. If $Y$ is a subset of a topological space $X$, which is
+irreducible in its induced topology, then the closure $\conj{Y}$ is also
+irreducible.
+\begin{solution}
+Let $X$ be an irreducible topological space, and $U$ be a nonempty open
+subset. Then the closure $\conj{U}$ of $U$ is a closed set, and $X = \conj{U}
+\cup (X \setminus U)$. Thus, $X \setminus U$ is either empty or all of $X$.
+However, $U$ is non-empty, so it can't be all of $X$. Thus it is empty, and
+$\conj{U} = X$, so $U$ is dense.
+
+Write $U = (C_1 \cap U) \cup (C_2 \cap U)$ for $C_1, C_2$ closed sets of $X$.
+Assume that both $C_i \cap X$ are proper subsets of $U$.
+Then taking the closure of both sides, we see that $\conj{C_1 \cap U}$ is either
+empty or all of $X$. If it is empty, then $C_1 \cap U$ is empty, a
+contradiction. Thus it must be all of $X$, and $\conj{C_2 \cap U}$ must be
+empty. However, this again produces a contradiction. Thus, $U$ must be
+irreducible.
+
+Now assume $Y$ is irreducible. If $\conj{Y}$ isn't, then
+$\conj{Y} = (C_1 \cap \conj{Y}) \cup (C_2 \cap \conj{Y})$, where $C_i \cap
+\conj{Y}$ are both proper subsets of $\conj{Y}$ and $C_i$ are both closed sets
+of $X$. Intersecting both sides with $Y$, we obtain $Y = (C_1 \cap Y) \cup (C_2
+\cap Y)$. Then one of these equals $Y$, and without loss of generality suppose
+it is $C_1 \cap Y$. Then $Y \subset C_1$, so $\conj{Y} \subset C_1$, since $C_1$
+is closed. This contradicts the assumption that $C_i \cap \conj{Y}$ are both
+proper subsets of $\conj{Y}$.
+\end{solution}
+
+
+\question
+\begin{parts}
+\part Show that the following conditions are equivalent for a topological space
+$X$:
+\begin{enumerate}[(i)]
+\item $X$ is noetherian,
+\item every nonempty family of closed subsets has a minimal element
+\item $X$ satisfies the ascending chain condition for open subsets,
+\item every nonempty family of open subsets has a maximal element
+\end{enumerate}
+
+\part A noetherian topological space is quasi-compact.
+
+\part Any subset of a noetherian topological space is noetherian in its induced
+topology.
+
+\part A noetherian space which is also  Hausdorff must be a finite set with the
+discrete topology.
+\end{parts}
+\question Let $Y$ be an affine variety of dimension $r$. Let $H$ be a
+hypersurface in the same affine space, and assume $Y \not\subseteq H$. Then
+every irreducible component of $Y \cap H$ has dimension $r - 1$.
+\end{questions}
+
+\bibliographystyle{amsplain}
+\bibliography{refs}
+\end{document}
+
