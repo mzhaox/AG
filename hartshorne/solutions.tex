@@ -4,6 +4,28 @@
 
 \section{Varieties}
 \subsection{Affine Varieties}
+Several of the first questions will need the following result, which describes
+when a polynomial is identically zero.
+
+\begin{lem}\label{ident-zero}
+Let $A := k[x_1, ..., x_n]$ be a polynomial ring. If the image of $f$ is zero
+under $A \rightarrow A / \mathfrak{m}$ for every maximal ideal $\mathfrak{m}$,
+then $f$ is zero.
+\end{lem}
+\begin{proof}
+This follows from the Jacobson radical of $A$ being zero (for any field, not
+necessarily algebraically closed). 
+\end{proof}
+
+For $k$ algebraically closed, the maximal ideals correspond to points
+in $\mathbb{A}^k$, so a polynomial which evaluates to 0 for every element of $k$
+is identically zero. However, if $k$ is finite, then while the Jacobson radical
+of $A$ is zero, the ideal
+\[
+\bigcap_{(a_1, ..., a_n) \in k^n} \langle x_1 - a_1, ..., x_n - a_n \rangle
+\neq 0,
+\]
+in general.
 
 \begin{questions}
 \question Let $k = \conj{k}$ be a field.
@@ -14,19 +36,9 @@ polynomial ring in one variable over $k$.
 Define $\varphi : k[x,y] \rightarrow k[x]$ by $y \rightarrow x^2$. This is
 clearly surjective, and we just want to show that $\ker \varphi = I(Y)$. If $f
 \in \ker \varphi$, then $f(x, x^2)$ is identically zero, so $f$ vanishes at
-every point of $Y$. If $f \in I(Y)$, so that $f(a, a^2)$ for every $a \in k$, we
-can only conclude $f(x, x^2) = 0$ since $k$ is algebraically closed. This
-follows from the
-\begin{lem}
-For $f_1, f_2 \in k[x]$, if $f_1(a) = f_2(a)$ for every $a \in k$, then $f_1 =
-f_2$.
-\end{lem}
-\begin{proof}
-Since $k$ is algebraically closed, $f_1 - f_2$ has finitely many zeros, unless
-it is identically zero. It has infinitely many zeros since $k$ is
-algebraically closed. Thus, $f_1 = f_2$.
-\end{proof}
-Thus, $k[x,y] / I(Y) \iso k[x]$.
+every point of $Y$. If $f \in I(Y)$, so that $f(a, a^2)$ for every $a \in k$,
+by lemma \ref{ident-zero}, we can conclude $f(x, x^2) = 0$. Thus,
+$k[x,y] / I(Y) \iso k[x]$.
 \end{solution}
 \part Let $Z = \{ (x, y) | xy = 1\}$. Show that $A(Z)$ is not isomorphic to a
 polynomial ring in one variable over $k$.
@@ -81,8 +93,8 @@ generated $k$-algebra with no nilpotent elements.
 Suppose $B$ has $n$ generators. Then there is $\varphi: k[x_1, ..., x_n]
 \twoheadrightarrow B$, sending $x_i$ to the $i$-th generator. We just need to
 show that $\ker \varphi$ is a radical ideal, so that it corresponds to an
-algebraic set. If $f^n \in \ker \varphi$, then $\varphi(f)^n = 0$. Since $B$ has
-no nilpotents, $\varphi(f) = 0$, hence $f \in \ker \varphi$.
+algebraic set. If $f^n \in \ker \varphi$, then $\varphi(f^n) = \varphi(f)^n =
+0$. Since $B$ has no nilpotents, $\varphi(f) = 0$, hence $f \in \ker \varphi$.
 \end{solution}
 
 \question Any nonempty open subset of an irreducible topological space is dense
@@ -125,18 +137,124 @@ $X$:
 \item $X$ satisfies the ascending chain condition for open subsets,
 \item every nonempty family of open subsets has a maximal element
 \end{enumerate}
+\begin{solution}
+The key point is to understand that a minimal element contains no other elements
+from the family, and that a maximal element isn't contained in any other element
+from the family.
+
+Assume $X$ is noetherian, and consider a nonempty family of closed subsets.
+Choose an element $C_1$ from this family. If it is minimal, we are done.
+Otherwise, choose $C_2 \subset C_1$. Repeat the process for $C_2$, and so
+on. Such a process will stabilize, otherwise we can obtain a descending chain
+that violates the descending chain condition.
+
+Now assume (ii), and consider an ascending chain of open sets. Taking the
+complements gives us a descending chain of closed sets. This must have a minimal
+element, thus the chain must stabilize. By taking complements, we see that the
+ascending chain condition for open sets is satisfied for the original chain.
+
+Now assume that $X$ satisfies the ascending chain condition on open subsets.
+Then repeat the proof of (i) $\Rightarrow$ (ii).
+
+Now assume that every nonempty family of open subsets of $X$ has a maximal
+element. Then repeat the proof of (ii) $\Rightarrow$ (iii).
+\end{solution}
 
 \part A noetherian topological space is quasi-compact.
+\begin{solution}
+Take a cover of a noetherian space $X$ by $\{U_\alpha\}_{\alpha \in I}$.
+Consider the family of finite unions of $U_\alpha$, for $\alpha \in I$. Then
+there is a maximal element $U_1 \cup \cdots \cup U_n$. Suppose that this does
+not equal $X$. Then there is a point lying outside of this union, and since $
+\{U_\alpha\}$ are a cover, there is a $U_\beta$ containing this point. 
+Then $U_1 \cup \cdots \cup U_n \cup U_\beta$ is a finite union larger
+than $U_1 \cup \cdots \cup U_n$, a contradiction.
+\end{solution}
 
 \part Any subset of a noetherian topological space is noetherian in its induced
 topology.
+\begin{solution}
+Let $Y \subset X$ be a subset of a noetherian space $X$. Suppose we have a
+descending chain of closed sets $Z_1 \supset Z_2 \supset \cdots$, where the
+$Z_i$ are closed in $Y$. They are written as $Z_i = C_i \cap Y$, for $C_i$
+closed in $X$. Now take $D_i = C_1 \cap \cdots \cap C_i$. Then $D_i \supset D_
+{i + 1}$, so the $D_{i}$ form a descending chain of closed subsets and must
+stabilize, i.e. $D_r = D_{r + 1}$. Then $C_{r + 1} \supset C_1 \cap \cdots \cap
+C_r$. Intersecting with $Y$, we obtain $Z_{r + 1} \supset \bigcap_{i = 1}^r
+Z_i = Z_r$. Since $Z_r \supset Z_{r + 1}$, $Z_r = Z_{r + 1}$. By induction, the
+$Z_i$ stabilize past $Z_r$. Thus $Y$ is Noetherian.
+\end{solution}
 
-\part A noetherian space which is also  Hausdorff must be a finite set with the
+\part A noetherian space which is also Hausdorff must be a finite set with the
 discrete topology.
+\begin{solution}
+If $X$ is noetherian, it can be written as a union of maximal irreducible,
+closed subsets $Z_i$. Each $Z_i$ must be Noetherian by the previous part, and
+will of course be Hausdorff.
+
+In this case, assume that $Z_i$ has more than one point, and take two distinct
+points $x, y$. Then there are neighborhoods $U, V$ of $x, y$ such that $U \cap
+V = \emptyset$. However, this contradicts the formulation of irreducibility as
+``any two non-empty opens have non-empty intersection.'' Thus $Z_i$ consists of
+a single point.
+
+Thus, all points of $X$ are closed, hence any subset of $X$ is closed, being a
+finite union of closed sets. Thus $X$ had the discrete topology.
+\end{solution}
 \end{parts}
-\question Let $Y$ be an affine variety of dimension $r$. Let $H$ be a
-hypersurface in the same affine space, and assume $Y \not\subseteq H$. Then
-every irreducible component of $Y \cap H$ has dimension $r - 1$.
+\question Let $Y$ be an affine variety of dimension $r$ in $\mathbb{A}_k^n$. Let
+$H$ be a hypersurface in the same affine space, and assume $Y \not\subseteq H$.
+Then every irreducible component of $Y \cap H$ has dimension $r - 1$.
+\begin{solution}
+Let $Y$ correspond to the $k$-algebra domain $B = k[x_1, ..., x_n]/I(Y)$. Then
+$H = Z(f)$ for some irreducible $f \in k[x_1, ..., x_n]$. Then $\dim B = r$, and
+$I(H) = I(Z(f)) = (f)$. Since $Y \not\subseteq H$, $f \not \in I(Y)$, and so in
+$B$, $f$ is non-zero.
+
+Now take an irreducible component $W$ of $Y \cap H$. Then $W \subset Y, H$, so
+$I(W) \supset (f), I(Y)$. Thus $I(W)$ corresponds to a prime ideal $\mathfrak
+{p}$ in $B$ containing $f$. By Krull's Hauptidealsatz, $\mathfrak{p}$ has height
+$1$. Then $\dim B/\mathfrak{p} = r - 1$. By the third isomorphism theorem,
+$B/\mathfrak{p}$ is indeed the coordinate ring of $W$, hence $\dim W = r - 1$.
+\\
+\begin{rmk}
+Note that $Y$, $H$ are both closed, so their intersection is closed. Then they
+are a union of irreducible closed subsets (of affine space, irreducible when
+those subsets are given the induced topology). Thus, $W$ is a closed subset of
+the ambient affine space, and irreducible. So $I(W)$ is prime.
+\end{rmk}
+\end{solution}
+
+\question Let $\mathfrak{a} \subseteq A = k[x_1, ..., x_n]$ be an ideal which
+can be generated by $r$ elements. Then every irreducible component of $Z
+(\mathfrak{a})$ has dimension at least $n - r$.
+\begin{solution}
+Let $a = \langle f_1, ..., f_r \rangle$. Then $Z(\mathfrak{a}) = Z(f_1) \cap
+\cdots \cap Z(f_r)$. Let $f_i = \prod_{j = 1}^{n_i} f_{ij}$ be a factorization
+into irreducibles. Then
+\begin{align*}
+Z(\mathfrak{a}) & = \bigcap_{i = 1}^r \bigcup_{j = 1}^{n_i} Z(f_ij) \\
+& = \bigcup_{(j_1, ..., j_r)} Z(f_{ij_1}) \cap \cdots \cap Z(f_{ij_r})
+\end{align*}
+By the previous exercise, the irreducible components of each of the terms of the
+union is at least $n - r$ (there may be some redundancies among the
+irreducibles).
+\end{solution}
+
+\question
+\begin{parts}
+\part If $Y$ is any subset of a topological space $X$, then $\dim Y \leq \dim X$.
+\begin{solution}
+\end{solution}
+\part If $X$ is a topological space which is covered by a family of open
+subsets $\{U_i\}$, then $\dim X = \sup \dim U_i$.
+\part Give an example of a topological space $X$ and a dense open subset $U$
+with $\dim U < \dim X$.
+\part If $Y$ is a closed subset of an irreducible finite-dimensional tpological
+spzce $X$, and if $\dim Y = \dim X$, then $Y = X$.
+\part Give an example of a noetherian topological space of infinite dimension.
+\end{parts}
+
 \end{questions}
 
 \bibliographystyle{amsplain}

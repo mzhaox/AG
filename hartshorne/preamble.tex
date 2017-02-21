@@ -41,10 +41,12 @@
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{defn}[thm]{Definition}
 \newtheorem{prop}[thm]{Proposition}
-\newtheorem{rmk}[thm]{Remark}
 \newtheorem{lem}[thm]{Lemma}
 \newtheorem{exmpl}[thm]{Example}
 \crefformat{footnote}{#2\footnotemark[#1]#3}
+
+\theoremstyle{remark}
+\newtheorem{rmk}[thm]{Remark}
 
 \input{commands/algebra}
 \input{commands/geometry}
